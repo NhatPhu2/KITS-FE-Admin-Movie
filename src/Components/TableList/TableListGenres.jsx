@@ -187,19 +187,13 @@ const TableListGenres = () => {
   const handlePageClick = (event, i) => {
     getGenres(i - 1)
   }
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const recordsPerPage = 5;
-  // const lastIndex = currentPage * recordsPerPage;
-  // const firstIndex = lastIndex - recordsPerPage;
-  // const records = movies.listMovie.data.slice(firstIndex, lastIndex);
-  // const nPage = Math.ceil(movies.listMovie.data.length / recordsPerPage);
-  // const numbers = [...Array(nPage + 1).keys()].slice(1);
 
   // Avoid a layout jump when reaching the last page with empty rows.
 
   return (
     <StyledTableList>
       <Box sx={{ width: "100%" }}>
+            {genres.listGenres &&
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedTableToolbar />
           <TableContainer>
@@ -212,8 +206,7 @@ const TableListGenres = () => {
                 rowCount={genres.listGenres && genres.listGenres.length}
               />
               <TableBody>
-                {genres.listGenres &&
-                  genres.listGenres.map((el, i) => (
+                  {genres.listGenres.map((el, i) => (
                     <TableRow
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }} key={i}
                     >
@@ -246,6 +239,7 @@ const TableListGenres = () => {
             <Pagination onChange={handlePageClick} count={totalPages} variant="outlined" color="primary" />
           </Stack>
         </Paper>
+}
       </Box>
     </StyledTableList>
   );

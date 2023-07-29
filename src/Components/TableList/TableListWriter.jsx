@@ -187,19 +187,12 @@ const TableListWriter = () => {
     getWriter(i - 1)
   }
 
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const recordsPerPage = 5;
-  // const lastIndex = currentPage * recordsPerPage;
-  // const firstIndex = lastIndex - recordsPerPage;
-  // const records = movies.listMovie.data.slice(firstIndex, lastIndex);
-  // const nPage = Math.ceil(movies.listMovie.data.length / recordsPerPage);
-  // const numbers = [...Array(nPage + 1).keys()].slice(1);
-
   // Avoid a layout jump when reaching the last page with empty rows.
 
   return (
     <StyledTableList>
       <Box sx={{ width: "100%" }}>
+            {writers.listWriter &&
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedTableToolbar />
           <TableContainer>
@@ -213,8 +206,7 @@ const TableListWriter = () => {
               />
 
               <TableBody>
-                {writers.listWriter &&
-                  writers.listWriter.data.map((el, i) => (
+                  {writers.listWriter.data.map((el, i) => (
                     <TableRow
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }} key={i}
                     >
@@ -232,7 +224,6 @@ const TableListWriter = () => {
                       </TableCell>
                     </TableRow>
                   ))}
-
                 <TableRow
                   style={{
                     height: 33,
@@ -248,6 +239,7 @@ const TableListWriter = () => {
 
           </Stack>
         </Paper>
+}
       </Box>
     </StyledTableList>
   );

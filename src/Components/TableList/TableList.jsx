@@ -32,7 +32,7 @@ import ModalDelete from "../Modal/ModalDelete";
 
 const StyledTableList = styled.div`
   img {
-    width: 100%;
+    width: 6em;
   }
   .description {
     text-align: left;
@@ -214,95 +214,89 @@ const TableList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     getMovies(0)
+    //đây
   }, []);
-  const [totalPages, setTotalPages] = useState(movies.listMovie && movies.listMovie.totalPage);
   const getMovies = async (page) => {
-    { movies.listMovie && setTotalPages(movies.listMovie.totalPage) }
-    dispatch.movie.getAllMovie(page);
+    await dispatch.movie.getAllMovie(page);
   }
   const handlePageClick = (event, i) => {
     getMovies(i - 1)
   }
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const recordsPerPage = 5;
-  // const lastIndex = currentPage * recordsPerPage;
-  // const firstIndex = lastIndex - recordsPerPage;
-  // const records = movies.listMovie.data.slice(firstIndex, lastIndex);
-  // const nPage = Math.ceil(movies.listMovie.data.length / recordsPerPage);
-  // const numbers = [...Array(nPage + 1).keys()].slice(1);
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-
   return (
     <StyledTableList>
       <Box sx={{ width: "100%" }}>
-        <Paper sx={{ width: "100%", mb: 2 }}>
-          <EnhancedTableToolbar />
-          <TableContainer>
-            <Table
-              sx={{ minWidth: 750 }}
-              aria-labelledby="tableTitle"
-              size={"medium"}
-            >
-              <EnhancedTableHead
-                rowCount={movies.listMovie && movies.listMovie.length}
-              />
-              <TableBody>
-                {movies.listMovie &&
-                  movies.listMovie.data.map((el, i) => (
-                    <TableRow
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                      key={i}
-                    >
-                      <TableCell component="th" scope="row"></TableCell>
-                      <TableCell align="center">{el.id}</TableCell>
-                      <TableCell align="center">{el.movieName}</TableCell>
-                      <TableCell align="center">{el.video}</TableCell>
-                      <TableCell align="center">
-                        <img
-                          src={
-                            process.env.REACT_APP_IMG_URL + "/" + el.mainPoster
-                          }
-                          alt=""
-                        />{" "}
-                      </TableCell>
-                      <TableCell align="center">
-                        {el.billingPlan_billingPlanName}
-                      </TableCell>
-                      <TableCell align="center">{el.releasedDate}</TableCell>
-                      <TableCell className="description" align="center">
-                        {el.description}
-                      </TableCell>
-                      <TableCell className="actionBtn" align="center">
-                        {el.series === true ? (
-                          <div className="flexAction">
-                            <ModalFormAddEposide id={el.id}>
-                              New Eposide
-                            </ModalFormAddEposide>
-                            <Button variant="outlined" color="secondary">
-                              Edit
-                            </Button>
-                            <ModalDelete id={el.id} />
-                          </div>
-                        ) : (
-                          <div className="flexAction">
-                            <Button variant="outlined" color="secondary">
-                              Edit
-                            </Button>
-                            <ModalDelete id={el.id}/>
-                          </div>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                <TableRow>{/* <TableCell colSpan={6} /> */}</TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Stack alignItems={"center"}>
-            <Pagination onChange={handlePageClick} count={totalPages} variant="outlined" color="primary" />
-          </Stack>
-        </Paper>
+        {
+          movies.listMovie &&
+          (
+            <Paper sx={{ width: "100%", mb: 2 }}>
+              <EnhancedTableToolbar />
+              <TableContainer>
+                <Table
+                  sx={{ minWidth: 750 }}
+                  aria-labelledby="tableTitle"
+                  size={"medium"}
+                >
+                  <EnhancedTableHead
+                    rowCount={movies.listMovie && movies.listMovie.length}
+                  />
+                  <TableBody>
+                    {movies.listMovie.data.map((el, i) => (
+                      <TableRow
+                        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                        key={i}
+                      >
+                        <TableCell component="th" scope="row"></TableCell>
+                        <TableCell align="center">{el.id}</TableCell>
+                        <TableCell align="center">{el.movieName}</TableCell>
+                        <TableCell align="center">{el.video}</TableCell>
+                        <TableCell align="center">
+                          <img
+                            src={
+                              process.env.REACT_APP_IMG_URL + "/" + el.mainPoster
+                            }
+                            alt=""
+                          />{" "}
+                        </TableCell>
+                        <TableCell align="center">
+                          {el.billingPlan_billingPlanName}
+                        </TableCell>
+                        <TableCell align="center">{el.releasedDate}</TableCell>
+                        <TableCell className="description" align="center">
+                          {el.description}
+                        </TableCell>
+                        <TableCell className="actionBtn" align="center">
+                          {el.series === true ? (
+                            <div className="flexAction">
+                              <ModalFormAddEposide id={el.id}>
+                                New Eposide
+                              </ModalFormAddEposide>
+                              <Button variant="outlined" color="secondary">
+                                Edit
+                              </Button>
+                              <ModalDelete id={el.id} />
+                            </div>
+                          ) : (
+                            <div className="flexAction">
+                              <Button variant="outlined" color="secondary">
+                                Edit
+                              </Button>
+                              <ModalDelete id={el.id} />
+                            </div>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                    <TableRow>{/* <TableCell colSpan={6} /> */}</TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <Stack alignItems={"center"}>
+                <Pagination onChange={handlePageClick} count={movies.listMovie.totalPage} variant="outlined" color="primary" />
+              </Stack>
+            </Paper>
+          )
+        }
+
       </Box>
     </StyledTableList>
   );

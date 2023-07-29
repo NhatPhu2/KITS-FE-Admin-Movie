@@ -178,9 +178,7 @@ const TableListActor = () => {
   useEffect(() => {
     getActor(0)
   }, []);
-  const [totalPages, setTotalPages] = useState();
   const getActor = async (page) => {
-    { actors.listActor && setTotalPages(actors.listActor.totalPage) }
     dispatch.actor.getAllActor(page);
   }
 
@@ -200,6 +198,7 @@ const TableListActor = () => {
   return (
     <StyledTableList>
       <Box sx={{ width: "100%" }}>
+            {actors.listActor &&
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedTableToolbar />
           <TableContainer>
@@ -212,8 +211,7 @@ const TableListActor = () => {
                 rowCount={actors.listActor && actors.listActor.length}
               />
               <TableBody>
-                {actors.listActor &&
-                  actors.listActor.data.map((el, i) => (
+                  {actors.listActor.data.map((el, i) => (
                     <TableRow
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }} key={i}
                     >
@@ -243,9 +241,10 @@ const TableListActor = () => {
             </Table>
           </TableContainer>
           <Stack alignItems={"center"}>
-            <Pagination onChange={handlePageClick} count={totalPages} variant="outlined" color="primary" />
+            <Pagination onChange={handlePageClick} count={actors.listActor.totalPage} variant="outlined" color="primary" />
           </Stack>
         </Paper>
+}
       </Box>
     </StyledTableList>
   );

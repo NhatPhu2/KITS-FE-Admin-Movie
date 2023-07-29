@@ -200,19 +200,19 @@ function EnhancedTableToolbar(props) {
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
-
+//cái chỗ fetch api movie đâu
 const TableListAccount = () => {
 
   const accounts = useSelector((prop) => prop.account);
   const dispatch = useDispatch();
   useEffect(() => {
     getAccounts(0)
+
   }, []);
-  const [totalPages, setTotalPages] = useState(accounts.listAccount && accounts.listAccount.totalPage);
   const getAccounts = async (page) => {
-    { accounts.listAccount && setTotalPages(accounts.listAccount.totalPage) }
-    dispatch.account.getAllAccount(page);
+    await dispatch.account.getAllAccount(page);
   }
+  
   const handlePageClick = (event, i) => {
     getAccounts(i - 1)
   }
@@ -229,6 +229,7 @@ const TableListAccount = () => {
   return (
     <StyledTableList>
       <Box sx={{ width: "100%" }}>
+            {accounts.listAccount &&
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedTableToolbar />
           <TableContainer>
@@ -241,8 +242,7 @@ const TableListAccount = () => {
                 rowCount={accounts.listAccount && accounts.listAccount.length}
               />
               <TableBody>
-                {accounts.listAccount &&
-                  accounts.listAccount.data.map((el, i) => (
+                  {accounts.listAccount.data.map((el, i) => (
                     <TableRow
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }} key={i}
                     >
@@ -269,7 +269,7 @@ const TableListAccount = () => {
                   style={{
                     height: 33,
                   }}
-                >
+                  >
                   <TableCell colSpan={6} />
                 </TableRow>
 
@@ -277,9 +277,10 @@ const TableListAccount = () => {
             </Table>
           </TableContainer>
           <Stack alignItems={"center"}>
-            <Pagination onChange={handlePageClick} count={totalPages} variant="outlined" color="primary" />
+            <Pagination onChange={handlePageClick} count={accounts.listAccount.totalPage} variant="outlined" color="primary" />
           </Stack>
         </Paper>
+      }
       </Box>
     </StyledTableList>
   );

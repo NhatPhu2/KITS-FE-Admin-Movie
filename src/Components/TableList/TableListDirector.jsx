@@ -200,6 +200,7 @@ const TableListDirector = () => {
   return (
     <StyledTableList>
       <Box sx={{ width: "100%" }}>
+            {directors.listDirector &&
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedTableToolbar />
           <TableContainer>
@@ -212,8 +213,7 @@ const TableListDirector = () => {
                 rowCount={directors.listDirector && directors.listDirector.length}
               />
               <TableBody>
-                {directors.listDirector &&
-                  directors.listDirector.data.map((el, i) => (
+                  {directors.listDirector.data.map((el, i) => (
                     <TableRow
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }} key={i}
                     >
@@ -246,6 +246,7 @@ const TableListDirector = () => {
             <Pagination onChange={handlePageClick} count={totalPages} variant="outlined" color="primary" />
           </Stack>
         </Paper>
+}
       </Box>
     </StyledTableList>
   );

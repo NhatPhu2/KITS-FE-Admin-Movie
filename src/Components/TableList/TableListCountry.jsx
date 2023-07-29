@@ -201,6 +201,7 @@ const TableListCountry = () => {
     return (
         <StyledTableList>
             <Box sx={{ width: "100%" }}>
+                        {countries.listCountry &&
                 <Paper sx={{ width: "100%", mb: 2 }}>
                     <EnhancedTableToolbar />
                     <TableContainer>
@@ -213,8 +214,7 @@ const TableListCountry = () => {
                                 rowCount={countries.listCountry && countries.listCountry.length}
                             />
                             <TableBody>
-                                {countries.listCountry &&
-                                    countries.listCountry.data.map((el, i) => (
+                                    {countries.listCountry.data.map((el, i) => (
                                         <TableRow
                                             sx={{ "&:last-child td, &:last-child th": { border: 0 } }} key={i}
                                         >
@@ -246,6 +246,7 @@ const TableListCountry = () => {
                         <Pagination onChange={handlePageClick} count={totalPages} variant="outlined" color="primary" />
                     </Stack>
                 </Paper>
+                }
             </Box>
         </StyledTableList>
     );
