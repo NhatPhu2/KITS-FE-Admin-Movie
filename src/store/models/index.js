@@ -1,0 +1,12 @@
+import {auth} from "./auth"
+import {movie} from "./movie"
+import { country } from "./country"
+import { director } from "./director"
+import { writer } from "./writer"
+import { billingPlan } from "./billingPlan"
+import { actor } from "./actor"
+import { genres } from "./genres"
+import { season } from "./season"
+import { movieEpisode } from "./movieEposide"
+import { account } from "./account"
+export {auth, movie, country, director, writer, billingPlan, actor, genres, season, movieEpisode, account}
