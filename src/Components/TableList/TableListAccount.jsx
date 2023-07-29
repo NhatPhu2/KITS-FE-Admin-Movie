@@ -208,7 +208,7 @@ const TableListAccount = () => {
   useEffect(() => {
     getAccounts(0)
   }, []);
-  const [totalPages, setTotalPages] = useState(2);
+  const [totalPages, setTotalPages] = useState(accounts.listAccount && accounts.listAccount.totalPage);
   const getAccounts = async (page) => {
     { accounts.listAccount && setTotalPages(accounts.listAccount.totalPage) }
     dispatch.account.getAllAccount(page);

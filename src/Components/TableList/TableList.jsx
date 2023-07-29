@@ -215,7 +215,7 @@ const TableList = () => {
   useEffect(() => {
     getMovies(0)
   }, []);
-  const [totalPages, setTotalPages] = useState(2);
+  const [totalPages, setTotalPages] = useState(movies.listMovie && movies.listMovie.totalPage);
   const getMovies = async (page) => {
     { movies.listMovie && setTotalPages(movies.listMovie.totalPage) }
     dispatch.movie.getAllMovie(page);
