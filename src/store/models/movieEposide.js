@@ -12,18 +12,6 @@ export const movieEpisode = {
     },
   },
   effects: (dispatch) => ({
-    // async getAllMovieEposide() {
-    //   axios({
-    //     method: "get",
-    //     url: "/movies",
-   
-    //   }).then((res) => {
-    //     this.setMovie(res.data)
-    //     console.log(res.data)
-    //   })
-    //   .catch((err) => console.log(err))
-    // },
-
     async createMovieEpisode(body){
         axios({
             method: "post",

@@ -70,8 +70,6 @@ const FormAddEposide = ({id}) => {
     dispatch.season.getAllSeason();
   }, []);
 
-  useEffect(() => {});
-
   return (
     <StyledFormAdd>
       <h2>Create New Movie</h2>

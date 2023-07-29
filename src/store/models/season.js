@@ -12,11 +12,10 @@ export const season = {
     },
   },
   effects: (dispatch) => ({
-    async getAllSeason(page) {
+    async getAllSeason() {
       axios({
         method: "get",
-        url: `/seasons?page=${page}`,
-   
+        url: "/seasons",
       }).then((res) => {
         this.setSeason(res.data)
         console.log(res.data)
