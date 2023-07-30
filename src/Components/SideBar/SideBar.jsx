@@ -95,7 +95,7 @@ const SideBar = () => {
           <Settings></Settings>
         </NavItem>
         <NavItem text="Writers" path="/writer">
-          <Logout></Logout>
+        <Dashboard></Dashboard>
         </NavItem>
       </div>
     </StyledSideBar>

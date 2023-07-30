@@ -33,6 +33,15 @@ export const movie = {
         }).then((res)=> console.log(res))
         .catch((err) => console.log(err))
     },
+    async updateMovie(formData){
+      axios({
+          method: "put",
+          url: "/movies",
+          data: formData,
+          headers: { "Content-Type": "multipart/form-data" },
+      }).then((res)=> console.log(res))
+      .catch((err) => console.log(err))
+  },
     async deleteMovie(id){
       axios({
           method: "delete",

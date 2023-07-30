@@ -7,7 +7,6 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Toolbar from "@mui/material/Toolbar";
@@ -20,15 +19,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
-import { Button } from "@mui/material";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+
 import ModalFormAddEposide from "../Modal/ModalFormAddEposide";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import ModalDelete from "../Modal/ModalDelete";
+import ModalFormUpdate from "../Modal/ModalFormUpdate";
 
 const StyledTableList = styled.div`
   img {
@@ -270,16 +270,12 @@ const TableList = () => {
                               <ModalFormAddEposide id={el.id}>
                                 New Eposide
                               </ModalFormAddEposide>
-                              <Button variant="outlined" color="secondary">
-                                Edit
-                              </Button>
+                              <ModalFormUpdate id={el.id}>Edit</ModalFormUpdate>
                               <ModalDelete id={el.id} />
                             </div>
                           ) : (
                             <div className="flexAction">
-                              <Button variant="outlined" color="secondary">
-                                Edit
-                              </Button>
+                              <ModalFormUpdate id={el.id}>Edit</ModalFormUpdate>
                               <ModalDelete id={el.id} />
                             </div>
                           )}

@@ -9,7 +9,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Autocomplete,
 } from "@mui/material";
 import { styled } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -127,87 +126,87 @@ const ModalFormAddEposide = ({ children, id }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <StyledFormAdd id={id}>
-      <h2>Create New Movie</h2>
-      <form>
-        <Box sx={{ minWidth: 120, marginBottom: 2 }}>
-        <TextField
-          type="text"
-          variant="outlined"
-          color="secondary"
-          label="Movie Id"
-          onChange={(e) => setMovieId(e.target.value)}
-          value={movieId}
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-          disabled
-        />
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Season ID</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={seasonId}
-              label="Season ID"
-              fullWidth
-              onChange={handleChangeSeasonId}
-            >
-              {seasons.listSeason && seasons.listSeason.map((e)=>(
-                <MenuItem value={e.id}>{e.seasonName}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-        <TextField
-          type="text"
-          variant="outlined"
-          color="secondary"
-          label="Video"
-          onChange={(e) => setVideo(e.target.value)}
-          value={video}
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          type="text"
-          variant="outlined"
-          color="secondary"
-          label="Description"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          type="number"
-          variant="outlined"
-          color="secondary"
-          label="Eposide"
-          onChange={(e) => setEpisode(e.target.value)}
-          value={episode}
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
+          <StyledFormAdd id={id}>
+            <h2>Create New Movie</h2>
+            <form>
+              <Box sx={{ minWidth: 120, marginBottom: 2 }}>
                 <TextField
-          type="text"
-          variant="outlined"
-          color="secondary"
-          label="Eposide Name"
-          onChange={(e) => setEpisodeName(e.target.value)}
-          value={episodeName}
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <Button variant="outlined" color="secondary" onClick={handleSubmit}>
-          Create New
-        </Button>
-      </form>
-    </StyledFormAdd>
+                  type="text"
+                  variant="outlined"
+                  color="secondary"
+                  label="Movie Id"
+                  onChange={(e) => setMovieId(e.target.value)}
+                  value={movieId}
+                  fullWidth
+                  required
+                  sx={{ mb: 2 }}
+                  disabled
+                />
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Season ID</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={seasonId}
+                    label="Season ID"
+                    fullWidth
+                    onChange={handleChangeSeasonId}
+                  >
+                    {seasons.listSeason && seasons.listSeason.map((e) => (
+                      <MenuItem value={e.id}>{e.seasonName}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Box>
+              <TextField
+                type="text"
+                variant="outlined"
+                color="secondary"
+                label="Video"
+                onChange={(e) => setVideo(e.target.value)}
+                value={video}
+                fullWidth
+                required
+                sx={{ mb: 2 }}
+              />
+              <TextField
+                type="text"
+                variant="outlined"
+                color="secondary"
+                label="Description"
+                onChange={(e) => setDescription(e.target.value)}
+                value={description}
+                fullWidth
+                required
+                sx={{ mb: 2 }}
+              />
+              <TextField
+                type="number"
+                variant="outlined"
+                color="secondary"
+                label="Eposide"
+                onChange={(e) => setEpisode(e.target.value)}
+                value={episode}
+                fullWidth
+                required
+                sx={{ mb: 2 }}
+              />
+              <TextField
+                type="text"
+                variant="outlined"
+                color="secondary"
+                label="Eposide Name"
+                onChange={(e) => setEpisodeName(e.target.value)}
+                value={episodeName}
+                fullWidth
+                required
+                sx={{ mb: 2 }}
+              />
+              <Button variant="outlined" color="secondary" onClick={handleSubmit}>
+                Create New
+              </Button>
+            </form>
+          </StyledFormAdd>
         </Box>
       </Modal>
     </div>
