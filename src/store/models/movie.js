@@ -30,7 +30,10 @@ export const movie = {
             url: "/movies",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
-        }).then((res)=> console.log(res))
+        }).then((res)=> {
+          console.log(res)
+          this.getAllMovie(0);
+        })
         .catch((err) => console.log(err))
     },
     async updateMovie(formData){
