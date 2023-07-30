@@ -16,8 +16,8 @@ function App() {
     <Routes>
       <Route element={<LayoutAuth />}>
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
       </Route>
-      <Route path="/" element={<Login />} />
       <Route path="/movie" element={<Movie />} />
       <Route path="/account" element={<Account/>} />
     </Routes>
