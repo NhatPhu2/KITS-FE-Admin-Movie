@@ -70,32 +70,11 @@ const SideBar = () => {
     <StyledSideBar>
       <div className="around">
         <h1><img src={Logo} alt="" /></h1>
-        <NavItem text="Dashboard" path="/">
-          <Dashboard></Dashboard>
-        </NavItem>
         <NavItem text="Movies" path="/movie">
           <Products></Products>
         </NavItem>
         <NavItem text="Account" path="/account">
           <Customers></Customers>
-        </NavItem>
-        <NavItem text="Actors" path="/actor">
-          <Customers></Customers>
-        </NavItem>
-        <NavItem text="Billing Plans" path="/billing-plans">
-          <Orders></Orders>
-        </NavItem>
-        <NavItem text="Countries" path="/country">
-          <Shipments></Shipments>
-        </NavItem>
-        <NavItem text="Directors" path="/director">
-          <Transactions></Transactions>
-        </NavItem>
-        <NavItem text="Genres" path="/genres">
-          <Settings></Settings>
-        </NavItem>
-        <NavItem text="Writers" path="/writer">
-        <Dashboard></Dashboard>
         </NavItem>
       </div>
     </StyledSideBar>

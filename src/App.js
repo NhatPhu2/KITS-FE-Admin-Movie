@@ -17,15 +17,9 @@ function App() {
       <Route element={<LayoutAuth />}>
         <Route path="/login" element={<Login />} />
       </Route>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<Login />} />
       <Route path="/movie" element={<Movie />} />
       <Route path="/account" element={<Account/>} />
-      <Route path="/actor" element={<Actor/>} />
-      <Route path="/billing-plans" element={<BillingPlan/>} />
-      <Route path="/country" element={<Country/>} />
-      <Route path="/director" element={<Director/>} />
-      <Route path="/genres" element={<Genres/>} />
-      <Route path="/writer" element={<Writer/>} />
     </Routes>
   );
 }
